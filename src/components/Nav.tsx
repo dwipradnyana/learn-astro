@@ -7,7 +7,7 @@ const navMotion = {
   visible: {
     opacity: 1,
     transition: {
-      when: "befodeChildren",
+      when: "beforeChildren",
       staggerChildren: 0.15,
     },
   },
@@ -84,6 +84,27 @@ export default function Nav() {
       )}
 
       {toggled && !matches && (
+        <div className="fixed flex bg-white bottom-0 left-0 w-full h-screen items-center justify-center">
+          <motion.div
+            variants={navMotion}
+            animate="visible"
+            initial="hidden"
+            className="flex flex-col gap-24 text-lg"
+          >
+            <motion.a variants={itemMotion} href="/">
+              Home
+            </motion.a>
+            <motion.a variants={itemMotion} href="/services">
+              Services
+            </motion.a>
+            <motion.a variants={itemMotion} href="/contact">
+              Contact
+            </motion.a>
+          </motion.div>
+        </div>
+      )}
+
+      {/* {toggled && !matches && (
         <motion.div
           animate={{ opacity: 1, x: 0 }}
           initial={{ opacity: 0, x: 25 }}
@@ -95,7 +116,7 @@ export default function Nav() {
             <a href="/contact">Contact</a>
           </div>
         </motion.div>
-      )}
+      )} */}
     </nav>
   );
 }
